@@ -54,7 +54,7 @@ app.post('/upload', upload.single('myfile'), function(req, res, next){
 //     }
 // });
 
-app.listen(3006);
+app.listen(3005);
 
 // We have the express static module (http://expressjs.com/en/starter/static-files.html) do all
 // the work for us.
@@ -87,19 +87,30 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.post("/saveRecord", function(req, res){
-    var recordList = req.body.data.split("|")
+
+    var goodParameters = JSON.parse(req.body.data)
+
+    console.log(goodParameters)
+    var recordList = goodParameters.features.split("|")
+    var conditionList = goodParameters.conditions.split("|")
     var processedList = []
+    var processedList2 = []
     for(var rec in recordList){
         var record = [recordList[rec]]
         processedList.push(record)
     }
-    csvdata.write("record.csv", processedList,{delimiter: ',', append: "true"})
+    for(var rec in conditionList){
+        var record = [conditionList[rec]]
+        processedList2.push(record)
+    }
+    csvdata.write("js/record_new.csv", processedList,{delimiter: ',', append: "true"})
+    csvdata.write("js/condition_new.csv", processedList2,{delimiter: ',', append: "true"})
 });
 
 
 app.get("/getRecord", function(req, res){
-    csvdata.load("record.csv").then(function(data){
-        res.json(data.length)
+    csvdata.load("js/record_new.csv").then(function(data){
+        res.json(data.length+1)
     })
 });
 

@@ -1,0 +1,57 @@
+#container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: #262626;
+}
+div{
+	margin: 5px;
+}
+
+.far:hover, svg:hover{
+  transform: scale(1.1);
+}
+
+svg{
+  transition: all 0.5s;
+}
+
+.far, .fas{
+  transition: all 0.2s;
+  color: #FDE9EB;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.rating{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 265px;
+  justify-content: center;
+}
+
+#test{
+  visibility: hidden;
+  position: fixed;
+  bottom: 0px;
+}
+
+@font-face {
+  font-family: 'DINPro-Bold';
+  src: url('./fonts/DINPro-Bold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'DINPro-Light';
+  src: url('./fonts/DINPro-Light.ttf') format('truetype')
+
+}
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('./fonts/Gotham-Bold.otf') format('opentype')
+}
+@font-face {
+  font-family: 'Gotham-Light';
+  src: url('./fonts/Gotham-Light.otf') format('opentype')
+}

@@ -1,4 +1,3 @@
-
 function csv2array(data, delimeter) {
     // Retrieve the delimeter
     if (delimeter == undefined)
